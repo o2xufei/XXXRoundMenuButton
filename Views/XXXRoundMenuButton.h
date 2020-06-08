@@ -68,6 +68,8 @@ typedef NS_OPTIONS(NSInteger, XXXIconType) {
  *  click block
  */
 @property (nonatomic, strong) void (^buttonClickBlock) (NSInteger idx);
+/** menu Block */
+@property (nonatomic, strong) void (^centerButtonClickBlock) (void);
 
 /**
  *  draw center icon block

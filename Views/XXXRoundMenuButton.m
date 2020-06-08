@@ -210,6 +210,9 @@
 - (void)centerButtonClicked:(UIButton*)sender
 {
     sender.selected = !sender.selected;
+    if (_centerButtonClickBlock) {
+        _centerButtonClickBlock();
+    }
 }
 
 - (void)setCenterButtonSize:(CGSize)centerButtonSize
@@ -403,7 +406,7 @@
     [ovalPath fill];
      self.centerIconView.alpha = 0;
     
-    if (self.type == XXXIconTypePlus || self.state == UIControlStateSelected) {
+    if (self.type == XXXIconTypePlus) {
         //// Rectangle Drawing
         UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(15, rect.size.height/2 - 0.5, rect.size.width - 30, 1)];
         [UIColor.whiteColor setFill];
@@ -428,6 +431,11 @@
             self.centerIconView.alpha = 1;
         }
         
+    }else if (self.state == UIControlStateSelected){
+        if (self.centerIcon) {
+            [self.centerIconView setImage:self.centerIcon];
+            self.centerIconView.alpha = 1;
+        }
     }
 }
 
